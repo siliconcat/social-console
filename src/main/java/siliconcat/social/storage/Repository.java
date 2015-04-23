@@ -9,8 +9,8 @@ import java.util.stream.Stream;
 
 public class Repository {
 
-    private Multimap<String, Message> messagesByUser;
-    private Multimap<String, User> subscriptionsByUser;
+    private final Multimap<String, Message> messagesByUser;
+    private final Multimap<String, User> subscriptionsByUser;
 
     public Repository() {
         this.messagesByUser = HashMultimap.create();

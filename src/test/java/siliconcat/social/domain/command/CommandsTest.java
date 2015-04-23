@@ -1,7 +1,11 @@
 package siliconcat.social.domain.command;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 import siliconcat.social.storage.Repository;
 
 import static org.hamcrest.CoreMatchers.*;
@@ -9,8 +13,17 @@ import static org.junit.Assert.assertThat;
 
 public class CommandsTest {
 
-    @Mock
     private Repository repository;
+
+    @Before
+    public void setUp() throws Exception {
+        repository = new Repository();
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        repository = null;
+    }
 
     @Test
     public void createAPublishCommand() throws Exception {

@@ -33,17 +33,17 @@ public class RepositoryTest {
         User maria = Users.createUser(repository, "Maria");
         User kiriko = Users.createUser(repository, "Kiriko");
 
-        Message msg1 = new Message(maria, "I am from Spain");
-        Message msg2 = new Message(kiriko, "I am from Japan");
-        Message msg3 = new Message(maria, "It is quite sunny here");
+        Message msgMaria1 = new Message(maria, "I am from Spain");
+        Message msgKiriko = new Message(kiriko, "I am from Japan");
+        Message msgMaria2 = new Message(maria, "It is quite sunny here");
 
-        repository.saveMessage(msg1);
-        repository.saveMessage(msg2);
-        repository.saveMessage(msg3);
+        repository.saveMessage(msgMaria1);
+        repository.saveMessage(msgKiriko);
+        repository.saveMessage(msgMaria2);
 
-        List<String> messagesFromMaria = repository.findMessages(maria).map(Message::getContent).collect(Collectors.toList());
+        List<Message> messagesFromMaria = repository.findMessages(maria).collect(Collectors.toList());
         assertEquals(2, messagesFromMaria.size());
-        assertThat(messagesFromMaria, hasItems("I am from Spain", "It is quite sunny here"));
+        assertThat(messagesFromMaria, hasItems(msgMaria1, msgMaria2));
     }
 
     @Test
@@ -55,7 +55,7 @@ public class RepositoryTest {
 
         List<User> mariaSubs = repository.findSubscriptions(maria).collect(Collectors.toList());
         assertEquals(1, mariaSubs.size());
-        assertEquals("Kiriko", mariaSubs.get(0).getName());
+        assertEquals(kiriko, mariaSubs.get(0));
 
         assertEquals(0, repository.findSubscriptions(kiriko).count());
     }

@@ -1,13 +1,14 @@
 package siliconcat.social.domain;
 
+import com.google.common.base.Objects;
 import siliconcat.social.storage.Repository;
 
 import java.util.stream.Stream;
 
 public class User {
 
-    private String name;
-    private Repository repository;
+    private final String name;
+    private final Repository repository;
 
     public User(Repository repository, String name) {
         this.repository = repository;
@@ -42,5 +43,18 @@ public class User {
 
     public void subscribeTo(User hansel) {
         repository.saveSubscription(this, hansel);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        User user = (User) o;
+        return Objects.equal(name, user.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hashCode(name);
     }
 }

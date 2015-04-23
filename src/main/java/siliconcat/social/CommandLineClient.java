@@ -12,7 +12,7 @@ public class CommandLineClient {
 
     private static final String LINE_START = "> ";
 
-    private Repository repository;
+    private final Repository repository;
 
     public CommandLineClient() {
         this.repository = new Repository();

@@ -5,7 +5,9 @@ import cucumber.api.java.Before;
 import org.joda.time.DateTime;
 import org.joda.time.DateTimeUtils;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.Mock;
+import org.mockito.runners.MockitoJUnitRunner;
 import siliconcat.social.domain.Message;
 import siliconcat.social.domain.Users;
 import siliconcat.social.storage.Repository;
@@ -14,18 +16,18 @@ import static org.junit.Assert.assertEquals;
 
 public class MessageFormatTest {
 
-    @Mock
     private Repository repository;
-
     private DateTime startDate = DateTime.now();
 
     @Before
     public void setUp() {
+        repository = new Repository();
         DateTimeUtils.setCurrentMillisFixed(startDate.getMillis());
     }
 
     @After
     public void tearDown() {
+        repository = null;
         DateTimeUtils.setCurrentMillisSystem();
     }
 
