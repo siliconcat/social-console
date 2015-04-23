@@ -1,0 +1,35 @@
+plugins {
+    id "com.github.samueltbrown.cucumber" version "0.8"
+}
+
+apply plugin: 'java'
+apply plugin: 'application'
+apply plugin: 'idea'
+
+sourceCompatibility = 1.8
+version = '1.0'
+
+mainClassName = "siliconcat.social.Application"
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'com.google.guava:guava:12.0'
+    compile 'joda-time:joda-time:2.3'
+    testCompile 'junit:junit:4.11'
+    testCompile 'org.mockito:mockito-core:1.8.5'
+    testCompile 'info.cukes:cucumber-java8:1.2.2'
+    cucumberCompile 'info.cukes:cucumber-java8:1.2.2'
+}
+
+run {
+    standardInput = System.in
+}
+
+idea{
+    module {
+        testSourceDirs += file('src/cucumber/java')
+    }
+}
