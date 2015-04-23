@@ -14,9 +14,9 @@ The application is just a terminal that accepts multiple commands:
  * *following*: `<user name> follows <another user>`
  * *wall*: `<user name> wall`
 
-There are two options to start the terminal.
+There are different options to start the terminal, explained below.
 
-### Using `gradle run`
+#### Using `gradle run`
 
 For the less patient social users, it is possible to simply start Gradle and run this command:
 
@@ -24,7 +24,7 @@ For the less patient social users, it is possible to simply start Gradle and run
 
 And when you see the '`>`' prompt, you can start executing commands right away.
 
-### Building an executable from the sources
+#### Building an executable from the sources
 
 For the slightly less impatience, it is possible to install the application and create an executable file to start it. Unless someone 
 is really exciting and start contributing code, the install command is only needed once:
@@ -34,6 +34,16 @@ is really exciting and start contributing code, the install command is only need
 This creates a standalone application that can simply be started:
 
     ./build/install/social-console/bin/social-console
+    
+#### Download the latest release
+
+The latest release can be downloaded in binary form from the [Releases section](https://github.com/siliconcat/social-console/releases/tag/1.0). 
+
+Once uncompress, simply run the executable:
+
+    ./bin/social-console
+   
+Or the one with the `.bat` extension if running on Windows.
 
 ## Insight into the approach to the challenge
 
