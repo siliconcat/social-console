@@ -5,7 +5,37 @@ A console-based social networking application (similar to Twitter, but with geek
 
 This console is purely a technical challenge in JAVA 8.
 
-## Approach
+## Starting the Social console
+
+The application is just a terminal that accepts multiple commands:
+
+ * *posting*: `<user name> -> <message>`
+ * *reading*: `<user name>`
+ * *following*: `<user name> follows <another user>`
+ * *wall*: `<user name> wall`
+
+There are two options to start the terminal.
+
+### Using `gradle run`
+
+For the less patient social users, it is possible to simply start Gradle and run this command:
+
+    ./gradlew --console plain run
+
+And when you see the '`>`' prompt, you can start executing commands right away.
+
+### Building an executable from the sources
+
+For the slightly less impatience, it is possible to install the application and create an executable file to start it. Unless someone 
+is really exciting and start contributing code, the install command is only needed once:
+
+    ./gradlew installApp
+   
+This creates a standalone application that can simply be started:
+
+    ./build/install/social-console/bin/social-console
+
+## Insight into the approach to the challenge
 
 An "outside-in" approach has been followed to create this API, starting by defining the [Acceptance tests using Cucumber](https://github.com/siliconcat/social-console/blob/master/src/cucumber/resources/timelines.feature) to cover the main scenarios.
 To make the different steps pass, Unit tests exist to drive the API design.
